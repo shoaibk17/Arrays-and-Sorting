@@ -62,4 +62,37 @@ int main() {
 
                                         
                                 
-                                        
+                                        Longest Arthimetic SubArray 
+               
+#include <iostream>
+using namespace std;
+
+int main() {
+    
+    int n; std::cin >> n;
+    int arr[n];
+    
+    for(int i = 0; i<n; i++){
+        cin>>arr[i];
+    }
+    int j =2;
+    int current = 2;
+    int ans = 2;
+    int pd = arr[1] - arr[0];
+    
+    while(j<n){
+        if(pd == arr[j] - arr[j - 1]){
+            current++;
+        }
+        else{
+            pd = arr[j] - arr[j-1];
+            current = 2;
+        }
+        ans = max(ans, current);
+        j++;
+    }
+    std::cout <<ans<<endl;
+	// your code goes here
+	return 0;
+}
+
