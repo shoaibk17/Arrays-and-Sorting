@@ -232,6 +232,40 @@ int main() {
 	// your code goes here
 	return 0;
 }
+	
+				MATRIX SEARCH			 
+				
+#include <iostream>
+using namespace std;
 
-				 
-				 
+int main() {
+    int n,m,key;
+    std::cin >> n>>m>>key;
+    int mat[n][m];
+    for(int i = 0; i<n; i++){
+        for(int j = 0; j<m; j++){
+            cin>>mat[i][j];
+        }
+    }
+    int r= 0, c = m-1;
+    bool found = false;
+    while(r<n && c >= 0){
+        if(mat[r][c] == key){
+            found = true;
+        }
+        if(mat[r][c]>key){
+            c--;
+        }
+        else{
+            r++;
+        }
+    }
+        if(found){
+            std::cout << " Element found";
+        }
+        else{
+            cout<<" Not there";
+        }
+	return 0;
+}
+
