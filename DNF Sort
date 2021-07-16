@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+void swap(int arr[], int i, int j){
+    int temp = arr[i];
+    arr[i] =  arr[j];
+    arr[j] = temp;
+}
+
+void dNfSort(int arr[], int n){
+    int low =0; 
+    int mid = 0;
+    int high = n-1;
+    
+    while(mid<=high){
+        if(arr[mid] == 0){
+            swap(arr, low,mid);
+            mid++; low++;
+        }
+        else if(arr[mid] == 1){
+            mid++;
+        }
+        else{
+            swap(arr,mid,high);
+            mid++; high--;
+        }
+    }  
+}
+
+int main() {
+	int arr[6] = {0,1,2,2,1,0};
+	dNfSort(arr,5);
+	for(int i =0; i<5; i++){
+	    std::cout << arr[i]<<" ";
+	}
+	return 0;
+}
