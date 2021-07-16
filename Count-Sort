@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+void CountSort(int arr[], int n){
+    int k = arr[0];                         //Max Element find-out in array
+    for(int i =0; i<n; i++){    
+        k = max(k,arr[i]);  
+    }
+    
+    int count[10]={0};                      //Count Array which stores Element count    
+    for(int i =0; i<n; i++){
+        count[arr[i]]++;
+    }
+    
+    for(int i =1; i<=k; i++){                //prefixSum array
+        count[i] += count[i-1];
+    }
+    
+    int outPut[n];                          //outPut array for saving new array
+    for(int i =n-1; i>=0; i--){
+        outPut[--count[arr[i]]] = arr[i];
+    }
+    for(int i =0; i<n; i++){                //paste value into original array
+        arr[i] =  outPut[i];
+    }
+}
+
+
+int main() {
+    int arr[10] = {1,3,2,3,4,1,6,4,3,5};
+    CountSort(arr, 9);
+    for(int i =0; i<9; i++){                //Print Arr
+    std::cout << arr[i]<<" ";
+    }
+	return 0;
+}
